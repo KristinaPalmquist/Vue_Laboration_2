@@ -8,4 +8,10 @@ import NavBar from "./components/NavBar.vue";
   </header>
 </template>
 
+<script>
+export default {
+    
+};
+</script>
+
 <style scoped></style>

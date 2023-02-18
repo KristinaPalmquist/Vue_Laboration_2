@@ -29,7 +29,7 @@ defineProps({
 <script>
 export default {
   data() {
-    return { logoSource: "../assets/img/logo.png" };
+    return { logoSource: "/src/assets/img/logo.png" };
   },
 };
 </script>

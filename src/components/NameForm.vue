@@ -21,11 +21,12 @@ import MyButton from "../components/MyButton.vue";
         :value="lastName"
         v-on:input="inputLastName"
       />
-      <my-button :value="`${text}`" @click="onClick" class="btn" />
+      <my-button :value="`${text}`" @click="onClick.prevent" class="btn" />
     </form>
     <div v-if="show">
       <div>
-        <h2>Hi {{ firstName }} {{ lastName }}!</h2>
+        <h4>Hi {{ firstName }} {{ lastName }}!</h4>
+        <p>Hey you. {{ result }}!</p>
       </div>
     </div>
     <div class="red">{{ error }}</div>
@@ -44,6 +45,7 @@ export default {
       error: "",
       show: false,
       text: "Click me!",
+      result: "",
     };
   },
   methods: {
@@ -57,6 +59,11 @@ export default {
         this.show = true;
         this.error = "";
       }
+    },
+  },
+  watch: {
+    firstName(newName) {
+      this.result = `Name has been changed to ${newName}.`;
     },
   },
 };

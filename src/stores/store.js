@@ -1,46 +1,42 @@
 import { createStore } from "vuex";
-import { projects } from "../../public/data.json";
-
-const delay = () => new Promise((res) => setTimeout(res, 500));
-
-// modules helps store scalability, making it possible to have several bransches
-// for different purposes
-const assignments = {
-  namespaced: true,
-
-  state() {
-    return {
-      projectNbr: null,
-      works: [],
-    };
-  },
-
-  mutations: {
-    projectNbr(state, workId) {
-      state.projectNbr = workId;
-    },
-    setProjects(state, work) {
-      state.works = work;
-    },
-  },
-  actions: {
-    async fetch(ctx) {
-      await delay();
-      ctx.commit("setProjects", projects);
-    },
-  },
-  getters: {
-    currentProject(state) {
-      return state.works.find((work) => {
-        return work.id === state.projectNbr;
-      });
-    },
-  },
-};
 
 export const store = createStore({
-  modules: {
-    // accessed through store.state.assignments.etc
-    assignments,
+  state() {
+    return {
+      projectId: null,
+      projectsList: [],
+      projects: [],
+    };
+  },
+  mounted() {
+    store.state.fetchData();
+  },
+  actions: {
+    fetchData() {
+      fetch("../../data.json", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json;charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          data.forEach((el) => {
+            store.state.projectsList = {
+              id: el.id,
+              school: el.school,
+              course: el.course,
+              from: el.from,
+              to: el.to,
+              details: el.details,
+              link: el.link,
+              src: el.src,
+            };
+            store.state.projects.push(store.state.projectsList);
+          });
+        });
+    },
   },
 });
+export default store;

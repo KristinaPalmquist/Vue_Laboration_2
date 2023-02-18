@@ -1,24 +1,14 @@
 <script setup>
-// import fetch from "fetch";
-// import FetchApi from "../components/FetchApi.vue";
+import TestStore from "../components/TestStore.vue";
 </script>
 
 <template>
   <h3>bootstrap</h3>
-  <div class="details">
-    <!-- <FetchApi
-      v-for="project in projects"
-      :key="project.id"
-      :project="project"
-    /> -->
-    <!-- Bootstrap accordion -->
-    <div class="accordion" id="accordionExample">
-      <div
-        class="accordion-item"
-        v-for="project in projects"
-        :key="project.id"
-        @click="click(project)"
-      >
+  <TestStore />
+  <!-- <div class="details"> -->
+  <!-- Bootstrap accordion -->
+  <!-- <div class="accordion" id="accordionExample">
+      <div class="accordion-item" v-for="project in projects" :key="project.id">
         <h2 class="accordion-header" id="headingOne">
           <button
             class="accordion-button"
@@ -28,8 +18,9 @@
             aria-expanded="true"
             aria-controls="collapseOne"
           >
-            {{ project.course }}, {{ project.school }}
-          </button>
+            Kurs, skola -->
+  <!-- {{ project.course }}, {{ project.school }} -->
+  <!-- '        </button>
         </h2>
         <div
           id="collapseOne"
@@ -38,49 +29,45 @@
           data-bs-parent="#accordionExample"
         >
           <div class="accordion-body">
-            <strong>{{ project.from }} - {{ project.to }}</strong>
-            <img :src="`${project.src}`" />
-            {{ project.link }}
-          </div>
+            <strong>
+              Rubrik' -->
+  <!-- {{ project.from }} - {{ project.to }} -->
+  <!-- </strong>
+            bild och text/länk -->
+  <!-- <img :src="`${project.src}`" />
+            {{ project.link }} -->
+  <!-- </div>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
 export default {
-  created() {
-    this.$store.dispatch("assigments/fetch");
-  },
-  computed: {
-    // blir denna rätt?
-    works() {
-      return this.$store.state.assignments.works;
-    },
-    chosenProject() {
-      return this.$store.getters["assignments/chosenProject"];
-    },
-    methods: {
-      click(work) {
-        return this.$store.commit("assignments/setProjects", work.id);
-      },
-    },
-  },
+  //   components: {
+  //     TestStore,
+  //   },
   //   data() {
   //     return {
-  //       projects: [],
+  //       projects: null,
   //     };
   //   },
-  //   components: { "fetch-api": FetchApi },
-  //   mounted() {
-  //     this.fetchData();
+  //   created() {
+  //     this.$store.dispatch("posts/fetch");
   //   },
-  //   methods: {
-  //     async fetchData() {
-  //       const res = await fetch("data.json");
-  //       const val = await res.json;
-  //       this.projects = val;
+  //   computed: {
+  //     // blir denna rätt?
+  //     works() {
+  //       return this.$store.state.posts.works;
+  //     },
+  //     chosenProject() {
+  //       return this.$store.getters["posts/chosenProject"];
+  //     },
+  //     methods: {
+  //       click(post) {
+  //         return this.$store.commit("posts/setProjects", post.id);
+  //       },
   //     },
   //   },
 };

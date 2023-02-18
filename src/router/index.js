@@ -4,7 +4,7 @@ import ProjectView from "../views/ProjectView.vue";
 import ProjectDetailsView from "../views/ProjectDetailsView.vue";
 import OtherView from "../views/OtherView.vue";
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
