@@ -1,11 +1,9 @@
 <script setup>
-import NavBar from "./components/NavBar.vue";
+import BootStore from "../components/BootStore.vue";
 </script>
 
 <template>
-  <header>
-    <NavBar name="Kristina Palmquist" />
-  </header>
+  <BootStore />
 </template>
 
 <script>

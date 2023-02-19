@@ -27,7 +27,7 @@
         "to": "2022-12-22",
         "details": "Some text",
         "link": "https://github.com/KristinaPalmquist",
-        "src": "../src/assets/img/uiux.png"
+        "src": "../src/assets/img/ux_ui.png"
     },
     {
         "id": 4,
@@ -47,7 +47,7 @@
         "to": "2023-03-19",
         "details": "Some text",
         "link": "https://visionary-cheesecake-9f573e.netlify.app",
-        "src": "../src/assets/img/webbteknik1.1.png"
+        "src": "../src/assets/img/webbteknik_1.1.png"
     },
     {
         "id": 6,

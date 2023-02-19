@@ -1,27 +1,35 @@
 <script setup>
 import CounterButton from "../../src/components/CounterButton.vue";
 import NameForm from "../../src/components/NameForm.vue";
-import ComPuted from "../components/ComPuted.vue";
 import ParentComponent from "../components/ParentComponent.vue";
+import VuexStore from "../components/VuexStore.vue";
 </script>
 
 <template>
   <main>
-    <NameForm />
-    <CounterButton :start="0" />
-    <ComPuted />
-    <ParentComponent />
+    <div id="nameForm">
+      <NameForm />
+    </div>
+    <div id="counterButton">
+      <CounterButton :start="0" />
+    </div>
+    <div id="parentComponent">
+      <ParentComponent />
+    </div>
+    <div id="vuexStore">
+      <VuexStore />
+    </div>
+    <div id="userView">
+      <span>Click one of these links to see a nested router in action:</span>
+      <router-link to="/other/alice">About Alice</router-link>
+      <router-link to="/other/bob">About Bob</router-link>
+      <RouterView />
+    </div>
   </main>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      valid: true,
-    };
-  },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -34,5 +42,15 @@ h2 {
 }
 p {
   padding: 1vh 0;
+}
+#nameForm,
+#vuexStore,
+#userView,
+#counterButton,
+#parentComponent {
+  margin: 4vh auto;
+}
+#userView a {
+  padding: 0 5vw;
 }
 </style>

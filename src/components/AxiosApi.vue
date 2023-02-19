@@ -1,8 +1,7 @@
 <template>
   <ul>
     <li>
-      <!-- {{ project.id }} -->
-      <a :href="`${project.link}`">
+      <a :href="`${project.link}`" target="_blank">
         {{ project.course }}
       </a>
       {{ project.school }}

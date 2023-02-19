@@ -2,34 +2,35 @@
 
 <template>
   <div>
-    <h3>Project Details</h3>
     <div v-for="project in projects()" :key="project.id">
       <!-- Bootstrap accordion -->
       <div class="addedFormatting">
         <div class="accordion" id="accordionExample">
           <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
+            <h2 class="accordion-header" :id="'heading' + `${project.id}`">
               <button
                 class="accordion-button"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
+                :data-bs-target="'#collapse' + `${project.id}`"
                 aria-expanded="true"
-                aria-controls="collapseOne"
+                :aria-controls="'collapse' + `${project.id}`"
               >
-                {{ project.course }}, {{ project.school }} ({{ project.from }} -
-                {{ project.to }})
+                {{ project.course }}
+                , {{ project.school }} ({{ project.from }} - {{ project.to }})
               </button>
             </h2>
             <div
-              id="collapseOne"
+              :id="'collapse' + `${project.id}`"
               class="accordion-collapse collapse show"
-              aria-labelledby="headingOne"
+              :aria-labelledby="'heading' + `${project.id}`"
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
                 <img :src="`${project.src}`" class="image" />
-                <a :href="`${project.link}`" class="link" />
+                <a :href="`${project.link}`" class="link" target="_blank">
+                  {{ project.link }}
+                </a>
               </div>
             </div>
           </div>
@@ -53,7 +54,7 @@ export default {
     this.$store.dispatch("fetchData");
   },
   mounted() {
-    setTimeout(() => this.projects(), 1000);
+    setTimeout(() => this.projects(), 2000);
   },
   methods: {
     projects() {
@@ -70,6 +71,7 @@ export default {
 </script>
 
 <style scoped>
+/* Styling added to adjust some of the Bootstrap-styling */
 .addedFormatting {
   min-width: 650px;
   max-width: 60vw;
@@ -80,16 +82,18 @@ export default {
   --bs-accordion-active-color: var(--black-olive);
   --bs-accordion-active-bg: var(--jonquil_transparent);
   --bs-accordion-color: var(--black-olive);
-  --bs-accordion-color: var(--black-olive);
   --bs-accordion-btn-color: var(--black-olive);
   --bs-accordion-btn-focus-box-shadow: var(--satin-sheen-gold);
+}
+.accordion-body {
+  padding: 0;
 }
 .accordion-item {
   color: var(--black-olive);
   background-color: var(--jonquil_transparent);
 }
 .accordion-button {
-  text-align: center;
+  font-weight: 700;
 }
 
 .image {

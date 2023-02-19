@@ -2,9 +2,9 @@
   <div class="input-wrapper">
     <div class="label">
       <label :for="name">{{ name }}</label>
-      <div class="error">{{ error }}</div>
     </div>
     <input :id="name" :value="value" :type="type" @input="input" />
+    <div class="error">{{ error }}</div>
   </div>
 </template>
 
@@ -33,6 +33,9 @@ export default {
     error: {
       type: String,
     },
+    placeholder: {
+      type: String,
+    },
   },
   created() {
     this.$emit("update", {
@@ -43,10 +46,6 @@ export default {
   },
   methods: {
     input($event) {
-      console.log("password:", $event.target.value);
-      console.log("Rules:", this.rules);
-      console.log("Value:", this.value);
-      console.log("name:", this.name.toLowerCase());
       this.$emit("update", {
         name: this.name.toLowerCase(),
         value: $event.target.value,

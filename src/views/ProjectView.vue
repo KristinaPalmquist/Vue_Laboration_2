@@ -5,7 +5,6 @@ import AxiosApi from "../components/AxiosApi.vue";
 
 <template>
   <main>
-    <h2>Projects</h2>
     <div class="projects">
       <axios-api
         v-for="project in projects"
@@ -30,7 +29,6 @@ export default {
   methods: {
     async axiosGet() {
       const res = await axios.get("data.json");
-
       this.projects = res.data;
     },
   },
@@ -39,6 +37,6 @@ export default {
 
 <style scoped>
 .projects {
-  margin-top: 10vh;
+  margin-top: 5vh;
 }
 </style>

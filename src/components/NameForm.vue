@@ -1,10 +1,9 @@
 <script setup>
-import MyButton from "../components/MyButton.vue";
+import AButton from "./AButton.vue";
 </script>
 
 <template>
   <div>
-    <h3>name form</h3>
     <form>
       <label :for="firstName">Please enter your</label>
       <input
@@ -21,13 +20,11 @@ import MyButton from "../components/MyButton.vue";
         :value="lastName"
         v-on:input="inputLastName"
       />
-      <my-button :value="`${text}`" @click="onClick.prevent" class="btn" />
+      <a-button :value="`${text}`" @click.prevent="onClick" />
     </form>
     <div v-if="show">
-      <div>
-        <h4>Hi {{ firstName }} {{ lastName }}!</h4>
-        <p>Hey you. {{ result }}!</p>
-      </div>
+      <h4>Hi {{ firstName }} {{ lastName }}!</h4>
+      <p>Hey you{{ result }}!</p>
     </div>
     <div class="red">{{ error }}</div>
   </div>
@@ -35,9 +32,6 @@ import MyButton from "../components/MyButton.vue";
 
 <script>
 export default {
-  //   components: {
-  //     MyButton,
-  //   },
   data() {
     return {
       firstName: "",
@@ -63,7 +57,7 @@ export default {
   },
   watch: {
     firstName(newName) {
-      this.result = `Name has been changed to ${newName}.`;
+      this.result = `r name has been changed to ${newName}`;
     },
   },
 };

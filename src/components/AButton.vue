@@ -1,12 +1,16 @@
 <template>
-  <button :style="{ background, color }" v-bind:disabled="disabled">
-    Button
+  <button class="btn" :style="{ background, color }" v-bind:disabled="disabled">
+    Submit
   </button>
 </template>
 
 <script>
 export default {
   props: {
+    // value: {
+    //   type: String,
+    //   default: "Submit",
+    // },
     background: {
       type: String,
     },
@@ -26,7 +30,7 @@ button:disabled {
 }
 button {
   background: var(--jonquil);
-  color: black;
+  color: var(--black-olive);
   border: none;
   border-radius: 5px;
   padding: 10px 40px;

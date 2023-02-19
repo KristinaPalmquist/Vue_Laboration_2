@@ -6,13 +6,19 @@ export const store = createStore({
       projectId: null,
       projectsList: [],
       projects: [],
+      posts: [],
     };
+  },
+  mutations: {
+    setPosts(state, projects) {
+      state.posts = projects;
+    },
   },
   mounted() {
     store.state.fetchData();
   },
   actions: {
-    fetchData() {
+    fetchData(ctx) {
       fetch("../../data.json", {
         method: "GET",
         headers: {
@@ -35,6 +41,7 @@ export const store = createStore({
             };
             store.state.projects.push(store.state.projectsList);
           });
+          ctx.commit("setPosts", store.state.projects);
         });
     },
   },

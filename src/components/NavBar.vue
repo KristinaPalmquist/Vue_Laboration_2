@@ -18,7 +18,7 @@ defineProps({
     <nav>
       <RouterLink to="/" class="link" id="link1">Home</RouterLink>
       <RouterLink to="/projects" class="link" id="link2">Projects</RouterLink>
-      <RouterLink to="/details" class="link" id="link2">Details</RouterLink>
+      <RouterLink to="/images" class="link" id="link2">Images</RouterLink>
       <RouterLink to="/other" class="link" id="link3">Other</RouterLink>
     </nav>
   </div>

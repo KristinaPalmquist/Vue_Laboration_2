@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from "../../node_modules/vue-router";
 import HomeView from "../views/HomeView.vue";
 import ProjectView from "../views/ProjectView.vue";
-import ProjectDetailsView from "../views/ProjectDetailsView.vue";
+import ImagesView from "../views/ImagesView.vue";
 import OtherView from "../views/OtherView.vue";
+import UserView from "../views/UserView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,14 +19,19 @@ export const router = createRouter({
       component: ProjectView,
     },
     {
-      path: "/details",
-      name: "Details",
-      component: ProjectDetailsView,
+      path: "/images",
+      name: "Images",
+      component: ImagesView,
     },
     {
       path: "/other",
       name: "Other",
       component: OtherView,
+    },
+    {
+      path: "/other/:userName",
+      name: "User",
+      component: UserView,
     },
   ],
 });

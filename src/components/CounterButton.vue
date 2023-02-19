@@ -1,18 +1,14 @@
-<script setup></script>
+<script setup>
+import AButton from "./AButton.vue";
+</script>
 
 <template>
-  <h3>Counter button</h3>
-  <div class="flexContainer">
-    <p>Click the button</p>
+  <div class="flexContainer" :class="getClass(counter)">
+    <p id="flexItem1">Click the submit-button</p>
 
-    <MyButton
-      class="btn"
-      :value="counter"
-      @click="counter++"
-      :disabled="!valid"
-    />
+    <a-button id="flexItem2" :value="counter" @click="counter++" />
 
-    <div :class="getClass(counter)">
+    <div id="flexItem3">
       <p v-if="isEven()">{{ counter }} is an <strong>even</strong> number</p>
       <p v-else>{{ counter }} is an <strong>odd</strong> number</p>
     </div>
@@ -40,17 +36,22 @@ export default {
 
 <style scoped>
 .flexContainer {
+  max-width: 50vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin: 0 auto;
 }
-/*
-#flexItem2 {
-  font-size: 15pt;
-  width: 50px;
-  font-weight: 200;
-} */
 
+#flexItem1,
+#flexItem3 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+#flexItem3 p {
+  margin: auto;
+}
 .even {
   color: darkgreen;
 }
