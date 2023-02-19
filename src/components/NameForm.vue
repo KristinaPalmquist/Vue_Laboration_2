@@ -23,8 +23,10 @@ import AButton from "./AButton.vue";
       <a-button :value="`${text}`" @click.prevent="onClick" />
     </form>
     <div v-if="show">
-      <h4>Hi {{ firstName }} {{ lastName }}!</h4>
-      <p>Hey you{{ result }}!</p>
+      <p>
+        Hi {{ firstName }} {{ lastName }}! First name has been watched and is
+        now updated to: {{ result }}
+      </p>
     </div>
     <div class="red">{{ error }}</div>
   </div>
@@ -57,7 +59,7 @@ export default {
   },
   watch: {
     firstName(newName) {
-      this.result = `r name has been changed to ${newName}`;
+      this.result = `${newName}`;
     },
   },
 };

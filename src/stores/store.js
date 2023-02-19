@@ -27,6 +27,8 @@ export const store = createStore({
       })
         .then((response) => response.json())
         .then((data) => {
+          // clearing projects to prevent adding on to last fetch-result
+          store.state.projects = [];
           data.forEach((el) => {
             store.state.projects.push({
               id: el.id,

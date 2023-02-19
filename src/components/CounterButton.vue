@@ -7,11 +7,16 @@ import AButton from "./AButton.vue";
     <p id="flexItem1">Click the submit-button</p>
 
     <a-button id="flexItem2" :value="counter" @click="counter++" />
+  </div>
 
-    <div id="flexItem3">
-      <p v-if="isEven()">{{ counter }} is an <strong>even</strong> number</p>
-      <p v-else>{{ counter }} is an <strong>odd</strong> number</p>
-    </div>
+  <div :class="getClass(counter)">
+    <p v-if="isEven()">
+      If {{ counter }} is an <strong>even</strong> number, this text appears
+    </p>
+    <p v-else>
+      If {{ counter }} is <strong>not</strong> an even number, this text appears
+      instead
+    </p>
   </div>
 </template>
 
@@ -25,7 +30,7 @@ export default {
   },
   methods: {
     getClass(counter) {
-      return this.isEven(counter) ? "even" : "uneven";
+      return this.isEven(counter) ? "even" : "odd";
     },
     isEven() {
       return this.counter % 2 === 0;
@@ -36,15 +41,14 @@ export default {
 
 <style scoped>
 .flexContainer {
-  max-width: 50vw;
+  max-width: 30vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
 }
 
-#flexItem1,
-#flexItem3 {
+#flexItem1 {
   display: flex;
   align-items: center;
   margin: 0;
@@ -55,7 +59,7 @@ export default {
 .even {
   color: darkgreen;
 }
-.uneven {
+.odd {
   color: brown;
 }
 </style>
