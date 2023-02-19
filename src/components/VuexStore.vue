@@ -6,7 +6,7 @@ import AButton from "./AButton.vue";
   <div>
     Another counther, this time initiated through Vuex store mutation
     <a-button @click="onClick"></a-button>
-    {{ otherStore.state.count }}
+    {{ store.state.count }}
   </div>
 </template>
 
@@ -14,17 +14,15 @@ import AButton from "./AButton.vue";
 import { useStore } from "vuex";
 export default {
   data() {
-    const otherStore = useStore();
+    const store = useStore();
 
     return {
-      otherStore,
-      nbr1: 0,
-      nbr2: 0,
+      store,
     };
   },
   methods: {
     onClick() {
-      this.otherStore.commit("increment");
+      this.$store.commit("increment");
     },
   },
 };

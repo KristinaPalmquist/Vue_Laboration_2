@@ -1,37 +1,35 @@
 <script setup></script>
 
 <template>
-  <div>
-    <div v-for="project in projects()" :key="project.id">
-      <!-- Bootstrap accordion -->
-      <div class="addedFormatting">
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header" :id="'heading' + `${project.id}`">
-              <button
-                class="accordion-button"
-                type="button"
-                data-bs-toggle="collapse"
-                :data-bs-target="'#collapse' + `${project.id}`"
-                aria-expanded="true"
-                :aria-controls="'collapse' + `${project.id}`"
-              >
-                {{ project.course }}
-                , {{ project.school }} ({{ project.from }} - {{ project.to }})
-              </button>
-            </h2>
-            <div
-              :id="'collapse' + `${project.id}`"
-              class="accordion-collapse collapse show"
-              :aria-labelledby="'heading' + `${project.id}`"
-              data-bs-parent="#accordionExample"
+  <!-- Bootstrap accordion -->
+  <div class="addedFormatting">
+    <div class="accordion" id="accordionExample">
+      <div v-for="project in projects()" :key="project.id" class="box">
+        <div class="accordion-item">
+          <h2 class="accordion-header" :id="'heading' + `${project.id}`">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              :data-bs-target="'#collapse' + `${project.id}`"
+              aria-expanded="false"
+              :aria-controls="'collapse' + `${project.id}`"
             >
-              <div class="accordion-body">
-                <img :src="`${project.src}`" class="image" />
-                <a :href="`${project.link}`" class="link" target="_blank">
-                  {{ project.link }}
-                </a>
-              </div>
+              {{ project.course }}
+              , {{ project.school }} ({{ project.from }} - {{ project.to }})
+            </button>
+          </h2>
+          <div
+            :id="'collapse' + `${project.id}`"
+            class="accordion-collapse collapse"
+            :aria-labelledby="'heading' + `${project.id}`"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <img :src="`${project.src}`" class="image" />
+              <a :href="`${project.link}`" class="link" target="_blank">
+                {{ project.link }}
+              </a>
             </div>
           </div>
         </div>
@@ -58,13 +56,11 @@ export default {
   },
   methods: {
     projects() {
-      console.log(
-        "computed projects:",
-        JSON.parse(JSON.stringify(this.$store.state.projects))
-      );
-      console.log("bajs");
-      console.log(this.$store.state.projects);
-      return JSON.parse(JSON.stringify(this.$store.state.projects));
+      if (this.$store.state.projects) {
+        return JSON.parse(JSON.stringify(this.$store.state.projects));
+      }
+      console.log("Cannot find the projects");
+      return [];
     },
   },
 };
@@ -75,7 +71,7 @@ export default {
 .addedFormatting {
   min-width: 650px;
   max-width: 60vw;
-  margin: 0 auto;
+  margin: 10vh auto;
 }
 .accordion {
   --bs-accordion-btn-focus-border-color: var(--jonquil);

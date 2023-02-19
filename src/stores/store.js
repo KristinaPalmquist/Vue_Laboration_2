@@ -4,21 +4,20 @@ export const store = createStore({
   state() {
     return {
       projectId: null,
-      projectsList: [],
       projects: [],
-      posts: [],
+      count: 0,
     };
-  },
-  mutations: {
-    setPosts(state, projects) {
-      state.posts = projects;
-    },
   },
   mounted() {
     store.state.fetchData();
   },
+  mutations: {
+    increment(state) {
+      state.count++;
+    },
+  },
   actions: {
-    fetchData(ctx) {
+    fetchData() {
       fetch("../../data.json", {
         method: "GET",
         headers: {
@@ -29,7 +28,7 @@ export const store = createStore({
         .then((response) => response.json())
         .then((data) => {
           data.forEach((el) => {
-            store.state.projectsList = {
+            store.state.projects.push({
               id: el.id,
               school: el.school,
               course: el.course,
@@ -38,10 +37,8 @@ export const store = createStore({
               details: el.details,
               link: el.link,
               src: el.src,
-            };
-            store.state.projects.push(store.state.projectsList);
+            });
           });
-          ctx.commit("setPosts", store.state.projects);
         });
     },
   },
