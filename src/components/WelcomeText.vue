@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <h1>This is my work</h1>
+  <h2>This is my work</h2>
   <p>
     You are very welcome to visit and if you have an account, please log in.
   </p>
